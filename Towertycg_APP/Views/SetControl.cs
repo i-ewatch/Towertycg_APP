@@ -20,12 +20,12 @@ namespace Towertycg_APP.Views
                 lbl_InWetBulbTemp.Text = $"{SetDevice.InWetBulbTemp.ToString("0.##")} \xb0" + "C";
                 lbl_InDewPointTemp.Text = $"{SetDevice.InDewPointTemp.ToString("0.##")} \xb0" + "C";
                 lbl_InRelativeHumidity.Text = $"{SetDevice.InRelativeHumidity.ToString("0.##")} %";
-                lbl_InAbsoluteHumidity.Text = $"{SetDevice.InAbsoluteHumidity.ToString("0.####")} kg/m\xb3";
+                lbl_InAbsoluteHumidity.Text = $"{SetDevice.InAbsoluteHumidity.ToString("0.####")} g/m\xb3";
                 lbl_InEnthalpy.Text = $"{SetDevice.InEnthalpy.ToString("0.##")} kJ/kg";
                 lbl_OutWetBulbTemp.Text = $"{SetDevice.OutWetBulbTemp.ToString("0.##")} \xb0" + "C";
                 lbl_OutDewPointTemp.Text = $"{SetDevice.OutDewPointTemp.ToString("0.##")} \xb0" + "C";
                 lbl_OutRelativeHumidity.Text = $"{SetDevice.OutRelativeHumidity.ToString("0.##")} %";
-                lbl_OutAbsoluteHumidity.Text = $"{SetDevice.OutAbsoluteHumidity.ToString("0.####")} kg/m\xb3";
+                lbl_OutAbsoluteHumidity.Text = $"{SetDevice.OutAbsoluteHumidity.ToString("0.####")} g/m\xb3";
                 lbl_OutEnthalpy.Text = $"{SetDevice.OutEnthalpy.ToString("0.##")} kJ/kg";
                 lbl_HeatLoadRate.Text = $"{SetDevice.HeatLoadRate.ToString("0.##")} %";
                 lbl_ElectricLoadRate.Text = $"{SetDevice.ElectricLoadRate.ToString("0.##")} %";

@@ -82,7 +82,7 @@ namespace Towertycg_APP
             this.fluentDesignFormControl1.Manager = this.fluentFormDefaultManager1;
             this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(2);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1022, 31);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1078, 31);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.bbtn_Login);
@@ -105,7 +105,7 @@ namespace Towertycg_APP
             this.xtcl_DeviceView.Location = new System.Drawing.Point(0, 31);
             this.xtcl_DeviceView.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtcl_DeviceView.Name = "xtcl_DeviceView";
-            this.xtcl_DeviceView.Size = new System.Drawing.Size(1022, 736);
+            this.xtcl_DeviceView.Size = new System.Drawing.Size(1078, 736);
             this.xtcl_DeviceView.TabIndex = 3;
             // 
             // notifyIcon
@@ -118,7 +118,7 @@ namespace Towertycg_APP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 767);
+            this.ClientSize = new System.Drawing.Size(1078, 767);
             this.Controls.Add(this.xtcl_DeviceView);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
@@ -127,7 +127,6 @@ namespace Towertycg_APP
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Towertycg_App";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).EndInit();

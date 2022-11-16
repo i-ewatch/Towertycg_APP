@@ -224,7 +224,7 @@ namespace Towertycg_APP.Methods
             airCalculationClass.PWSS = pwss;//濕球溫度下，飽和狀態之水蒸氣分壓
             airCalculationClass.WSS = wss;//濕球溫度下，飽和狀態之濕度比
             airCalculationClass.Td = td;//露點溫度
-            airCalculationClass.AH = AH;//絕對溼度 (kg/m3)
+            airCalculationClass.AH = AH * 1000;//絕對溼度 (g/m3)
             return airCalculationClass;
         }
     }

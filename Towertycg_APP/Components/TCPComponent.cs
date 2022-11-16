@@ -314,7 +314,7 @@ namespace Towertycg_APP.Components
                             #region Set整合
                             if (_setDevice.CellDevices.Count > 0)
                             {
-                                List<CellDevice> cellDevices = _setDevice.CellDevices.Where(g => g.ActionFlag).ToList();
+                                List<CellDevice> cellDevices = _setDevice.CellDevices;//.Where(g => g.ActionFlag).ToList();
                                 if (cellDevices.Count > 0)
                                 {
                                     int ElectricIndex = 0;
@@ -350,8 +350,11 @@ namespace Towertycg_APP.Components
                                         OutEnthalpy += cellitem.OutEnthalpy;
                                         foreach (var Electricitem in cellitem.ElectricDvices)
                                         {
-                                            ElectricLoadRate += Electricitem.ElectricLoadRate;
-                                            ElectricIndex++;
+                                            if (Electricitem.ActionFlag)
+                                            {
+                                                ElectricLoadRate += Electricitem.ElectricLoadRate;
+                                                ElectricIndex++;
+                                            }
                                         }
                                     }
                                     foreach (var item in _setDevice.FlowDvices)
@@ -381,7 +384,10 @@ namespace Towertycg_APP.Components
                                         OutputFlowTemp = OutputFlowTemp / _setDevice.FlowDvices.Count();
                                         _setDevice.Appr = OutputFlowTemp - _setDevice.InWetBulbTemp;
                                     }
-                                    _setDevice.ElectricLoadRate = ElectricLoadRate/ ElectricIndex;
+                                    if (ElectricIndex != 0)
+                                    {
+                                        _setDevice.ElectricLoadRate = ElectricLoadRate / ElectricIndex;
+                                    }
                                     _setDevice.SendTime = DateTime.Now;
                                 }
                                 else

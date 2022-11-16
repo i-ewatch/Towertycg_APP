@@ -19,7 +19,7 @@ namespace Towertycg_APP.Views
                 lbl_WetBulbTemp.Text = $"{SenserDevice.WetBulbTemp.ToString("0.##")} \xb0" + "C";
                 lbl_DewPointTemp.Text = $"{SenserDevice.DewPointTemp.ToString("0.##")} \xb0" + "C";
                 lbl_RelativeHumidity.Text = $"{SenserDevice.Humidity.ToString("0.##")} %";
-                lbl_AbsoluteHumidity.Text = $"{SenserDevice.AbsoluteHumidity.ToString("0.####")} kg/m\xb3";
+                lbl_AbsoluteHumidity.Text = $"{SenserDevice.AbsoluteHumidity.ToString("0.####")} g/m\xb3";
                 lbl_Enthalpy.Text = $"{SenserDevice.Enthalpy.ToString("0.##")} kJ/kg";
                 if (SenserDevice.ConnectionFlag)
                 {

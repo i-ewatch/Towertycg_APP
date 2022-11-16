@@ -16,8 +16,9 @@ namespace Towertycg_APP.Views
         /// </summary>
         private List<Field4Control> Field4Controls { get; set; } = new List<Field4Control>();
         private int CellIndex { get; set; } = 0;
-        private int DeviceIndex { get; set; } = 1;
-        private int DeviceY { get; set; } = 0;
+        private int FlowIndex { get; set; } = 1;
+        private int SenserIndex { get; set; } = 0;
+        private int ElectricIndex { get; set; } = 0;
         public DeviceView(GroupSetting groupSetting, List<AbsProtocol> absProtocols)
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace Towertycg_APP.Views
             SetSetting setSetting = groupSetting.SetSettings.SingleOrDefault(g => g.Set_Number == absProtocols[0].DeviceSetting.Set_Number);
             if (setSetting != null)
             {
-                SetControl setControl = new SetControl(setSetting, setSetting.Set_Name) { Location = new Point(2, 3), Tag = "Set" };
+                SetControl setControl = new SetControl(setSetting, setSetting.Set_Name) { Location = new Point(5, 3), Tag = "Set" };
                 Field4Controls.Add(setControl);
                 xscl_View.Controls.Add(setControl);
                 #region 建立流量計畫面
@@ -39,25 +40,22 @@ namespace Towertycg_APP.Views
                         case Device_Type.CYUT2000:
                             {
                                 FlowControl flowControl = new FlowControl(flowitem, $"{flowitem.DeviceSetting.Device_Name}")
-                                { Location = new Point(2 + (630 * DeviceIndex), 3), Tag = "Flow" };
+                                { Location = new Point(5 + (628 * FlowIndex), 3), Tag = "Flow" };
                                 Field4Controls.Add(flowControl);
                                 xscl_View.Controls.Add(flowControl);
-                                DeviceIndex++;
+                                FlowIndex++;
                             }
                             break;
                     }
                 }
                 #endregion
-                DeviceY = 98;
                 foreach (var cellitem in setSetting.CellSettings)
                 {
                     #region 建立Cell畫面
-                    CellControl cellControl = new CellControl(cellitem, cellitem.Cell_Name) { Location = new Point(2 + (460 * CellIndex), 275), Tag = "Cell" };//455, 302
+                    CellControl cellControl = new CellControl(cellitem, cellitem.Cell_Name) { Location = new Point(5 + (460 * CellIndex), 275), Tag = "Cell" };//455, 302
                     Field4Controls.Add(cellControl);
                     xscl_View.Controls.Add(cellControl);
                     #endregion
-                    DeviceY += 485;
-                    DeviceIndex = 0;
                     #region 建立電表畫面
                     List<AbsProtocol> Electric = AbsProtocols.Where(g => g.DeviceSetting.Cell_Number == cellitem.Cell_Number & g.DeviceSetting.Device_Type == 2).ToList();
                     foreach (var electricitem in Electric)
@@ -68,17 +66,17 @@ namespace Towertycg_APP.Views
                             case Device_Type.PA310:
                                 {
                                     ElectricControl electricControl = new ElectricControl(electricitem, $"{cellitem.Cell_Name}_{electricitem.DeviceSetting.Device_Name}")
-                                    { Location = new Point(2 + (400 * DeviceIndex), DeviceY), Tag = "Electric" };
+                                    { Location = new Point(5 + (460 * ElectricIndex), 583), Tag = "Electric" };//396, 292
                                     Field4Controls.Add(electricControl);
                                     xscl_View.Controls.Add(electricControl);
-                                    DeviceIndex++;
+                                    ElectricIndex++;
                                 }
                                 break;
                         }
                     }
                     #endregion
                     #region 建立溫溼度畫面
-
+                    SenserIndex = 0;
                     List<AbsProtocol> protocols = AbsProtocols.Where(g => g.DeviceSetting.Cell_Number == cellitem.Cell_Number).ToList();
                     foreach (var protocolitem in protocols)
                     {
@@ -131,17 +129,16 @@ namespace Towertycg_APP.Views
                                             }
                                             break;
                                     }
-                                     
+
                                     SenserControl senserControl = new SenserControl(protocolitem, TitleName)
-                                    { Location = new Point(2 + (400 * DeviceIndex), DeviceY), Tag = "Senser" };
+                                    { Location = new Point(5 + 460 * (CellIndex % 2), 880 + 195 * SenserIndex), Tag = "Senser" };//396, 192
                                     Field4Controls.Add(senserControl);
                                     xscl_View.Controls.Add(senserControl);
-                                    DeviceIndex++;
+                                    SenserIndex++;
                                 }
                                 break;
                         }
                     }
-
                     #endregion
                     CellIndex++;
                 }
